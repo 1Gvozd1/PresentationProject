@@ -2,11 +2,14 @@
 import { Routes, Route } from "react-router-dom";
 import "./styles/index.scss"
 import { Link } from "react-router-dom";
-import { MainPageAsync } from "./pages/MainPage/MainPage.async";
-import { AboutPageAsync } from "./pages/AboutPage/AboutPage.async";
+
 import { Suspense } from "react";
-import { useTheme } from "./theme/useTheme";
-import { classNames } from "./helpers/classNames/classNames";
+import { useTheme } from "app/providers/ThemeProvider";
+import { AboutPage } from "pages/AboutPage";
+import { MainPage } from "pages/MainPage";
+import { classNames } from "shared/lib/classNames/classNames";
+
+
 
 
 
@@ -19,8 +22,8 @@ export function App() {
         <Link to='/about'>О сайте</Link>
         <Suspense fallback={<div>Loading...</div>}> {/* показать крутилку до тех пор пока компонент не подгрузился */}
             <Routes> {/* все роуты что есть в нашем приложении нужно обернуть в Routes */}
-                <Route path='/' element={<MainPageAsync/>}/> {/* path - путь, element - компонент который хранится/отрисовывается по данному пути */}
-                <Route path='/about' element={<AboutPageAsync />}/> {/* Async для того чтобы не грузить весь бандл */}
+                <Route path='/' element={<MainPage/>}/> {/* path - путь, element - компонент который хранится/отрисовывается по данному пути */}
+                <Route path='/about' element={<AboutPage/>}/> {/* Async для того чтобы не грузить весь бандл */}
             </Routes>
         </Suspense>
     </div>

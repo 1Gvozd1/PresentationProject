@@ -20,7 +20,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         module: {
           rules: buildLoaders(options),//конфигурируем лоадеры, предназначенные для обработки не js файлы (jpg,css,ts)
         },
-        resolve: buildResolvers(), //эти параметры изменяют способ разрешения модулей.
+        resolve: buildResolvers(options), //эти параметры изменяют способ разрешения модулей.
         devtool: isDev ? "inline-source-map" : undefined, //позволяет отследить в каком файле была ошибка при сборке (нужен только в dev для сокращения места в prod)
         devServer: isDev ? buildDevServer(options) : undefined, //сервер
       }

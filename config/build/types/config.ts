@@ -5,6 +5,7 @@ export interface BuildPaths { //любые пути
     entry: string; //путь для entrypoint
     build: string; //путь до папки со сборкой
     html: string; //путь до html
+    src: string; //путь до папки с исходным кодом
 }
 
 export interface BuildEnv {
