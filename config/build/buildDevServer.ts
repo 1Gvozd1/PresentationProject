@@ -7,6 +7,7 @@ export function buildDevServer({port}: BuildOptions) : DevServerConfiguration {
     return {
         port,
         open: true, //будет автоматически открывать страницу с нашим приложением
-        historyApiFallback: true // без нее до http://localhost:3000/about можно добраться только через http://localhost:3000 и Link
+        historyApiFallback: true, // без нее до http://localhost:3000/about можно добраться только через http://localhost:3000 и Link
+        hot: true, //для того чтобы при сохранении кода изменения применялись без обновления страницы
     }
 }

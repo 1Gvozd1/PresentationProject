@@ -1,6 +1,6 @@
 import HTMLWebpackPlugin from 'html-webpack-plugin'// const HTMLWebpackPlugin = require('html-webpack-plugin');
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import webpack from 'webpack';// const webpack = require('webpack');
+import webpack from 'webpack'; // const webpack = require('webpack');
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPluginInstance[] {
@@ -16,7 +16,8 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
             new webpack.DefinePlugin({ //плагин для глобальный переменных нашего проекта
               __IS_DEV__: JSON.stringify(isDev),
 
-            })
+            }),
+            new webpack.HotModuleReplacementPlugin(), //для того чтобы при сохранении кода изменения применялись без обновления страницы
           ]
     
 }
