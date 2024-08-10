@@ -1,11 +1,10 @@
+export type BuildMode = 'production' | 'development' // режим
 
-export type BuildMode = 'production' | 'development' //режим
-
-export interface BuildPaths { //любые пути
-    entry: string; //путь для entrypoint
-    build: string; //путь до папки со сборкой
-    html: string; //путь до html
-    src: string; //путь до папки с исходным кодом
+export interface BuildPaths { // любые пути
+    entry: string; // путь для entrypoint
+    build: string; // путь до папки со сборкой
+    html: string; // путь до html
+    src: string; // путь до папки с исходным кодом
 }
 
 export interface BuildEnv {
@@ -13,7 +12,7 @@ export interface BuildEnv {
     port: number;
 }
 
-export interface BuildOptions { //Для конфигурации нашего конфига webpack (порт, пути, адреса API, dev или prod режим)
+export interface BuildOptions { // Для конфигурации нашего конфига webpack (порт, пути, адреса API, dev или prod режим)
     mode: BuildMode;
     paths: BuildPaths;
     isDev: boolean;

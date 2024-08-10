@@ -1,6 +1,6 @@
-//глобальная декларация типов
+// глобальная декларация типов
 
-//для того чтобы import classes from './Counter.module.scss' правильно работало
+// для того чтобы import classes from './Counter.module.scss' правильно работало
 declare module '*.scss' {
     interface IClassNames {
       [className: string]: string
@@ -9,7 +9,7 @@ declare module '*.scss' {
     export = classNames;
   }
 
-//для того чтобы TS понимал что такое .svg и другие картинки
+// для того чтобы TS понимал что такое .svg и другие картинки
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
@@ -20,4 +20,4 @@ declare module '*.svg' {
     export default SVG;
 }
 
-declare const __IS_DEV__: boolean // чтобы TS не ругался на нашу глобальную переменную
+declare const __IS_DEV__: boolean; // чтобы TS не ругался на нашу глобальную переменную
