@@ -6,6 +6,7 @@ module.exports = {
     extends: [
         'plugin:react/recommended',
         'airbnb',
+        'plugin:i18next/recommended',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -18,6 +19,7 @@ module.exports = {
     plugins: [
         'react',
         '@typescript-eslint',
+        'i18next',
     ],
     rules: {
         'react/jsx-indent': [2, 4], // отступы в jsx
@@ -29,7 +31,7 @@ module.exports = {
         'no-unused-vars': 'warn', // неиспользуемые переменные
         'react/require-default-props': 'off', // значения по умолчанию
         'react/react-in-jsx-scope': 'off', // используем jsx без импорта react (с 16 версии так не делают)
-        'react/jsx-props-no-spreading': 'warn', // чтобы использвать spred синтаксис для пропсов(практически всегда это не очень)
+        'react/jsx-props-no-spreading': 'warn', // чтобы использовать spread синтаксис для пропсов(практически всегда это не очень)
         'react/function-component-definition': 'off', // использовать не только FD функции
         'no-shadow': 'off',
         'import/extensions': 'off',
@@ -37,6 +39,7 @@ module.exports = {
         'no-underscore-dangle': 'off', // нижние отступы
         'linebreak-style': 'off',
         'max-len': ['error', { code: 1000, comments: 1000 }],
+        'i18next/no-literal-string': ['error', { markupOnly: true }], // ругается только на отсутствие переводов в jsx
     },
     globals: {
         __IS_DEV__: true, // чтобы не ругался на глоб переменные
