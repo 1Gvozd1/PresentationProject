@@ -5,17 +5,19 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { AppRouter } from "./providers/router";
 import { NavBar } from "widgets/NavBar";
 import { SideBar } from "widgets/SideBar";
+import { Suspense } from "react";
 
 export function App() {
     const {theme} = useTheme();
     return (
     <div className={classNames('app', {}, [theme])}> 
-        <NavBar />
-        <div className="content-page">
-            <SideBar />
-            <AppRouter/>
-        </div>
-        
+        <Suspense fallback=""> {/*данный Suspense для асинхронной подгрузки переводов*/}
+            <NavBar />
+            <div className="content-page">
+                <SideBar />
+                <AppRouter/>
+            </div>
+        </Suspense>
     </div>
     )
 }

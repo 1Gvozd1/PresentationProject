@@ -7,7 +7,6 @@ import { BuildEnv, BuildPaths } from './config/build/types/config';
 
 export default (env: BuildEnv) => { //возвращаем функцию а не сам конфиг чтобы получить доступ к переменным окружения (--env в package.json) передаем их в качестве аргумента env
   const mode = env.mode ?? 'development';
-  console.log(mode);
   const paths: BuildPaths = {
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
   build: path.resolve(__dirname, 'build'),
