@@ -5,7 +5,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
-    return [
+    const plugins = [
         new HTMLWebpackPlugin({
             template: paths.html, // используется как шаблон
         }), // плагин для сборки нашего index.html
@@ -18,7 +18,14 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
             __IS_DEV__: JSON.stringify(isDev),
 
         }),
-        new webpack.HotModuleReplacementPlugin(), // для того чтобы при сохранении кода изменения применялись без обновления страницы
-        new BundleAnalyzerPlugin({ openAnalyzer: false }), // для отображения размеров бандла, чанков
     ];
+
+    if (isDev) {
+        plugins.push(
+            new webpack.HotModuleReplacementPlugin(), // для того чтобы при сохранении кода изменения применялись без обновления страницы
+            new BundleAnalyzerPlugin({ openAnalyzer: false }), // для отображения размеров бандла, чанков (запускаем только в дев режиме чтобы корректно отработал github actions)
+        );
+    }
+
+    return plugins;
 }
