@@ -1,6 +1,7 @@
 import HTMLWebpackPlugin from 'html-webpack-plugin';// const HTMLWebpackPlugin = require('html-webpack-plugin');
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack'; // const webpack = require('webpack');
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
@@ -18,5 +19,6 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
 
         }),
         new webpack.HotModuleReplacementPlugin(), // для того чтобы при сохранении кода изменения применялись без обновления страницы
+        new BundleAnalyzerPlugin({ openAnalyzer: false }), // для отображения размеров бандла, чанков
     ];
 }

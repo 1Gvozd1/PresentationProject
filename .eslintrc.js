@@ -39,10 +39,18 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off', // нижние отступы
         'linebreak-style': 'off',
-        'max-len': ['error', { "ignoreComments": true, code: 1000 }],
-        'i18next/no-literal-string': ['warn', { markupOnly: true }], // ругается только на отсутствие переводов в jsx
+        'max-len': ['error', { ignoreComments: true, code: 1000 }],
+        'i18next/no-literal-string': ['warn', { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] }], // ругается только на отсутствие переводов в jsx
     },
     globals: {
-        __IS_DEV__: true, // чтобы не ругался на глоб переменные
+        __IS_DEV__: true, // чтобы не ругался на глобальные переменные
     },
+    overrides: [  // переопределяем правила для тестирующих файлов
+        {
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            },
+        },
+    ],
 };

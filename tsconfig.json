@@ -36,5 +36,11 @@
         "compilerOptions": {
           "module": "CommonJS"
         }
-      }
+    },
+    //дружим наш конфиг с jest-dom
+    "include": [
+        "./config/jest/setupTests.ts",
+        "./src/**/*.ts",
+        "./src/**/*.tsx",
+    ],
   }
