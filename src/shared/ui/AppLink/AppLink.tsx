@@ -7,6 +7,7 @@ import cls from './AppLink.module.scss';
 export enum AppLinkTheme { // тема для нашей ссылки (так как для UI кита должны быть разные темы - кнопка с рамкой; кнопка без рамки; кнопка с цветом заднего фона)
     PRIMARY = 'primary',
     SECONDARY = 'secondary',
+    RED = 'red'
 }
 
 interface AppLinkProps extends LinkProps { // так как у самого Link есть свои встроенные пропсы, наследуем
