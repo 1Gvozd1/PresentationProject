@@ -21,6 +21,7 @@ module.exports = {
         'react',
         '@typescript-eslint',
         'i18next',
+        'react-hooks',
     ],
     rules: {
         'react/jsx-indent': [2, 4], // отступы в jsx
@@ -41,15 +42,20 @@ module.exports = {
         'linebreak-style': 'off',
         'max-len': ['error', { ignoreComments: true, code: 1000 }],
         'i18next/no-literal-string': ['warn', { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] }], // ругается только на отсутствие переводов в jsx
+        'jsx-a11y/no-static-element-interactions': 'off', // чтобы вешать onClick на дивы
+        'jsx-a11y/click-events-have-key-events': 'warn',
+        'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+        'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
     },
     globals: {
         __IS_DEV__: true, // чтобы не ругался на глобальные переменные
     },
-    overrides: [  // переопределяем правила для тестирующих файлов
+    overrides: [ // переопределяем правила для тестирующих файлов
         {
-            files: ['**/src/**/*.test.{ts,tsx}'],
+            files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
             rules: {
                 'i18next/no-literal-string': 'off',
+                'max-len': 'off',
             },
         },
     ],

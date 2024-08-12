@@ -4,6 +4,7 @@ import cls from './Button.module.scss';
 
 export enum ButtonTheme { // тема для нашей кнопки (так как для UI кита должны быть разные темы - кнопка с рамкой; кнопка без рамки; кнопка с цветом заднего фона)
     CLEAR = 'clear', // кнопка без ничего
+    CLEAR_INVERTED = 'clearInverted',
     OUTLINE = 'outline',
     BACKGROUND = 'background',
     BACKGROUND_INVERTED = 'backgroundInverted',

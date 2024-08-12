@@ -1,10 +1,10 @@
 // Корневой компонент
-import './styles/index.scss';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { NavBar } from 'widgets/NavBar';
 import { SideBar } from 'widgets/SideBar';
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
+import { Modal } from 'shared/ui/Modal/Modal';
 import { AppRouter } from './providers/router';
 
 export function App() {
@@ -15,6 +15,7 @@ export function App() {
             <Suspense fallback="">
                 {/* данный Suspense для асинхронной подгрузки переводов */}
                 <NavBar />
+
                 <div className="content-page">
                     <SideBar />
                     <AppRouter />
