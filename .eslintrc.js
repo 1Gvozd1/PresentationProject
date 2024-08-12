@@ -46,6 +46,7 @@ module.exports = {
         'jsx-a11y/click-events-have-key-events': 'warn',
         'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
         'react-hooks/exhaustive-deps': 'error', // Checks effect dependencies
+        'no-param-reassign': 'off', // чтобы изменять поля state в redux
     },
     globals: {
         __IS_DEV__: true, // чтобы не ругался на глобальные переменные
