@@ -3,6 +3,7 @@ import { Modal } from 'shared/ui/Modal/Modal';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { LoginModal } from 'features/AuthByUsername';
 import cls from './NavBar.module.scss';
 
 interface NavBarProps {
@@ -13,8 +14,12 @@ export function NavBar({ className }:NavBarProps) {
     const [isAuthModal, setIsAuthModal] = useState(false);
     const { t } = useTranslation();
 
-    const onToggleModal = useCallback(() => { // так как мы передаем функцию как пропс, нужно обернуть ее в useCallback
-        setIsAuthModal((prev) => !prev);
+    const onCloseModal = useCallback(() => { // так как мы передаем функцию как пропс, нужно обернуть ее в useCallback
+        setIsAuthModal(false);
+    }, []);
+
+    const onShowModal = useCallback(() => { // так как мы передаем функцию как пропс, нужно обернуть ее в useCallback
+        setIsAuthModal(true);
     }, []);
     return (
         <div className={classNames(cls.Navbar, {}, [className])}>
@@ -22,14 +27,12 @@ export function NavBar({ className }:NavBarProps) {
             <Button
                 theme={ButtonTheme.CLEAR_INVERTED}
                 className={cls.links}
-                onClick={onToggleModal}
+                onClick={onShowModal}
             >
                 {t('Войти')}
             </Button>
 
-            <Modal isOpen={isAuthModal} onClose={onToggleModal}>
-                children
-            </Modal>
+            <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
 
         </div>
     );
